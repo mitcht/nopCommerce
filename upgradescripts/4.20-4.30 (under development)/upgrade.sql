@@ -217,6 +217,18 @@ set @resources='
   <LocaleResource Name="Admin.Configuration.Settings.GeneralCommon.LocalePattern.SuccessUpload">
     <Value>Localization patterns for the current culture loaded successfully.</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.Configuration.Plugins.FriendlyName">
+    <Value>Plugin friendly name</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Configuration.Plugins.FriendlyName.Hint">
+    <Value>Search by a plugin friendly name.</Value>
+  </LocaleResource>
+   <LocaleResource Name="Admin.Configuration.Plugins.Author">
+    <Value>Author</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Configuration.Plugins.Author.Hint">
+    <Value>Search by author.</Value>
+  </LocaleResource>
 </Language>
 '
 

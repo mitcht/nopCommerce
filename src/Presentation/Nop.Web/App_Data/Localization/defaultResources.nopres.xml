@@ -4911,6 +4911,12 @@
   <LocaleResource Name="Admin.Configuration.Plugins.ApplyChanges.Progress">
     <Value>Applying changes on plugins...</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.Configuration.Plugins.Author">
+    <Value>Author</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Configuration.Plugins.Author.Hint">
+    <Value>Search by author.</Value>
+  </LocaleResource>
   <LocaleResource Name="Admin.Configuration.Plugins.ChangesApplyAfterReboot">
     <Value>Changes will be apply after restart application</Value>
   </LocaleResource>
@@ -5015,6 +5021,12 @@
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.Plugins.Fields.Version">
     <Value>Version</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Configuration.Plugins.FriendlyName">
+    <Value>Plugin friendly name</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Configuration.Plugins.FriendlyName.Hint">
+    <Value>Search by a plugin friendly name.</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.Plugins.Group">
     <Value>Group</Value>
