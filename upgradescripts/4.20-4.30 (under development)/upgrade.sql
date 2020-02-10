@@ -229,6 +229,12 @@ set @resources='
   <LocaleResource Name="Admin.Configuration.Plugins.Author.Hint">
     <Value>Search by author.</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.Vendors.List.SearchEmail">
+    <Value>Vendor Email</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Vendors.List.SearchEmail.Hint">
+    <Value>Search by a vendor Email.</Value>
+  </LocaleResource>
 </Language>
 '
 

@@ -14445,6 +14445,12 @@
   <LocaleResource Name="Admin.Vendors.Info">
     <Value>Vendor Info</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.Vendors.List.SearchEmail">
+    <Value>Vendor Email</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Vendors.List.SearchEmail.Hint">
+    <Value>Search by a vendor Email.</Value>
+  </LocaleResource>
   <LocaleResource Name="Admin.Vendors.List.SearchName">
     <Value>Vendor name</Value>
   </LocaleResource>
