@@ -235,6 +235,12 @@ set @resources='
   <LocaleResource Name="Admin.Vendors.List.SearchEmail.Hint">
     <Value>Search by a vendor Email.</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.ContentManagement.Blog.BlogPosts.List.SearchTitle">
+    <Value>Title</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.ContentManagement.Blog.BlogPosts.List.SearchTitle.Hint">
+    <Value>Search by a blog post title.</Value>
+  </LocaleResource>
 </Language>
 '
 

@@ -9114,6 +9114,12 @@
   <LocaleResource Name="Admin.ContentManagement.Blog.BlogPosts.Info">
     <Value>Info</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.ContentManagement.Blog.BlogPosts.List.SearchTitle">
+    <Value>Title</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.ContentManagement.Blog.BlogPosts.List.SearchTitle.Hint">
+    <Value>Search by a blog post title.</Value>
+  </LocaleResource>
   <LocaleResource Name="Admin.ContentManagement.Blog.BlogPosts.List.SearchStore">
     <Value>Store</Value>
   </LocaleResource>
