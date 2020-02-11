@@ -247,6 +247,12 @@ set @resources='
   <LocaleResource Name="Admin.ContentManagement.News.NewsItems.List.SearchTitle.Hint">
     <Value>Search by a news items title.</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.Orders.Shipments.List.Warehouse.SearchName">
+    <Value>Name</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Orders.Shipments.List.Warehouse.SearchName.Hint">
+    <Value>Search by warehouse name.</Value>
+  </LocaleResource>
 </Language>
 '
 

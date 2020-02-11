@@ -152,7 +152,7 @@ namespace Nop.Services.Shipping
                 throw new ArgumentNullException(nameof(shippingMethod));
 
             _shippingMethodRepository.Delete(shippingMethod);
-            
+
             //event notification
             _eventPublisher.EntityDeleted(shippingMethod);
         }
@@ -178,27 +178,27 @@ namespace Nop.Services.Shipping
         public virtual IList<ShippingMethod> GetAllShippingMethods(int? filterByCountryId = null)
         {
             var key = string.Format(NopShippingCachingDefaults.ShippingMethodsAllCacheKey, filterByCountryId ?? 0);
-            
+
             if (filterByCountryId.HasValue && filterByCountryId.Value > 0)
             {
                 var query1 = from sm in _shippingMethodRepository.Table
-                    join smcm in _shippingMethodCountryMappingRepository.Table on sm.Id equals smcm.ShippingMethodId
-                    where smcm.CountryId == filterByCountryId.Value
-                    select sm.Id;
+                             join smcm in _shippingMethodCountryMappingRepository.Table on sm.Id equals smcm.ShippingMethodId
+                             where smcm.CountryId == filterByCountryId.Value
+                             select sm.Id;
 
                 query1 = query1.Distinct();
 
                 var query2 = from sm in _shippingMethodRepository.Table
-                    where !query1.Contains(sm.Id)
-                    orderby sm.DisplayOrder, sm.Id
-                    select sm;
+                             where !query1.Contains(sm.Id)
+                             orderby sm.DisplayOrder, sm.Id
+                             select sm;
 
                 return query2.ToCachedList(key);
             }
 
             var query = from sm in _shippingMethodRepository.Table
-                orderby sm.DisplayOrder, sm.Id
-                select sm;
+                        orderby sm.DisplayOrder, sm.Id
+                        select sm;
 
             return query.ToCachedList(key);
         }
@@ -246,7 +246,7 @@ namespace Nop.Services.Shipping
 
             var result = _shippingMethodCountryMappingRepository.Table.Any(smcm =>
                 smcm.ShippingMethodId == shippingMethod.Id && smcm.CountryId == countryId);
-            
+
             return result;
         }
 
@@ -326,13 +326,19 @@ namespace Nop.Services.Shipping
         /// <summary>
         /// Gets all warehouses
         /// </summary>
+        /// <param name="name">Warehouse name</param>
         /// <returns>Warehouses</returns>
-        public virtual IList<Warehouse> GetAllWarehouses()
+        public virtual IList<Warehouse> GetAllWarehouses(string name = null)
         {
-            var query = from wh in _warehouseRepository.Table
+            var query = _warehouseRepository.Table;
+            query = from wh in _warehouseRepository.Table
                         orderby wh.Name
                         select wh;
-            var warehouses = query.ToList();
+
+            if (!string.IsNullOrEmpty(name))
+                query = query.Where(w => w.Name.Contains(name));
+
+            var warehouses = new List<Warehouse>(query);
             return warehouses;
         }
 

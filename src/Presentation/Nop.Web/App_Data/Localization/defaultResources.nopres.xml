@@ -12137,7 +12137,7 @@
   </LocaleResource>
   <LocaleResource Name="Admin.Orders.Shipments.List.LoadNotDelivered.Hint">
     <Value>Load only undelivered shipments</Value>
-  </LocaleResource>
+  </LocaleResource>  
   <LocaleResource Name="Admin.Orders.Shipments.List.StartDate">
     <Value>Start date</Value>
   </LocaleResource>
@@ -12161,6 +12161,12 @@
   </LocaleResource>
   <LocaleResource Name="Admin.Orders.Shipments.List.Warehouse.Hint">
     <Value>Load shipments with products from a specified warehouse.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Orders.Shipments.List.Warehouse.SearchName">
+    <Value>Name</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Orders.Shipments.List.Warehouse.SearchName.Hint">
+    <Value>Search by warehouse name.</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Orders.Shipments.NoProductsSelected">
     <Value>No products selected</Value>
