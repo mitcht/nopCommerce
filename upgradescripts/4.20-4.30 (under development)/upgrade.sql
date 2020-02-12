@@ -253,6 +253,21 @@ set @resources='
   <LocaleResource Name="Admin.Orders.Shipments.List.Warehouse.SearchName.Hint">
     <Value>Search by warehouse name.</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.Catalog.Categories.List.SearchPublished">
+    <Value>Published</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Catalog.Categories.List.SearchPublished.All">
+    <Value>All</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Catalog.Categories.List.SearchPublished.Hint">
+    <Value>Search by a "Published" property.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Catalog.Categories.List.SearchPublished.PublishedOnly">
+    <Value>Published only</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Catalog.Categories.List.SearchPublished.UnpublishedOnly">
+    <Value>Unpublished only</Value>
+  </LocaleResource>
 </Language>
 '
 
