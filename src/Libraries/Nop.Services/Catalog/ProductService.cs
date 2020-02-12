@@ -416,7 +416,7 @@ namespace Nop.Services.Catalog
 
             //insert
             _productRepository.Insert(product);
-            
+
             //event notification
             _eventPublisher.EntityInserted(product);
         }
@@ -432,7 +432,7 @@ namespace Nop.Services.Catalog
 
             //update
             _productRepository.Update(product);
-            
+
             //event notification
             _eventPublisher.EntityUpdated(product);
         }
@@ -448,7 +448,7 @@ namespace Nop.Services.Catalog
 
             //update
             _productRepository.Update(products);
-            
+
             //event notification
             foreach (var product in products)
             {
@@ -539,6 +539,7 @@ namespace Nop.Services.Catalog
         /// true - load only "Published" products
         /// false - load only "Unpublished" products
         /// </param>
+        /// <param name="productTags">Filter products by product tags</param>
         /// <returns>Products</returns>
         public virtual IPagedList<Product> SearchProducts(
             int pageIndex = 0,
@@ -564,7 +565,8 @@ namespace Nop.Services.Catalog
             IList<int> filteredSpecs = null,
             ProductSortingEnum orderBy = ProductSortingEnum.Position,
             bool showHidden = false,
-            bool? overridePublished = null)
+            bool? overridePublished = null,
+            string productTags = null)
         {
             return SearchProducts(out var _, false,
                 pageIndex, pageSize, categoryIds, manufacturerId,
@@ -572,7 +574,7 @@ namespace Nop.Services.Catalog
                 productType, visibleIndividuallyOnly, markedAsNewOnly, featuredProducts,
                 priceMin, priceMax, productTagId, keywords, searchDescriptions, searchManufacturerPartNumber, searchSku,
                 searchProductTags, languageId, filteredSpecs,
-                orderBy, showHidden, overridePublished);
+                orderBy, showHidden, overridePublished, productTags);
         }
 
         /// <summary>
@@ -635,7 +637,8 @@ namespace Nop.Services.Catalog
             IList<int> filteredSpecs = null,
             ProductSortingEnum orderBy = ProductSortingEnum.Position,
             bool showHidden = false,
-            bool? overridePublished = null)
+            bool? overridePublished = null,
+            string productTags = null)
         {
             filterableSpecificationAttributeOptionIds = new List<int>();
 
@@ -778,12 +781,12 @@ namespace Nop.Services.Catalog
             int pageIndex = 0, int pageSize = int.MaxValue)
         {
             var query = from p in _productRepository.Table
-                join pam in _productAttributeMappingRepository.Table on p.Id equals pam.ProductId
-                where
-                    pam.ProductAttributeId == productAttributeId &&
-                    !p.Deleted
-                orderby p.Name
-                select p;
+                        join pam in _productAttributeMappingRepository.Table on p.Id equals pam.ProductId
+                        where
+                            pam.ProductAttributeId == productAttributeId &&
+                            !p.Deleted
+                        orderby p.Name
+                        select p;
 
             var key = string.Format(NopCatalogCachingDefaults.ProductsByProductAtributeCacheKey, productAttributeId);
 
@@ -930,22 +933,22 @@ namespace Nop.Services.Catalog
             int pageIndex = 0, int pageSize = int.MaxValue, bool getOnlyTotalCount = false)
         {
             var combinations = from pac in _productAttributeCombinationRepository.Table
-                join p in _productRepository.Table on pac.ProductId equals p.Id
-                where
-                    //filter by combinations with stock quantity less than the minimum
-                    pac.StockQuantity <= 0 &&
-                    //filter by products with tracking inventory by attributes
-                    p.ManageInventoryMethodId == (int)ManageInventoryMethod.ManageStockByAttributes &&
-                    //ignore deleted products
-                    !p.Deleted &&
-                    //ignore grouped products
-                    p.ProductTypeId != (int)ProductType.GroupedProduct &&
-                    //filter by vendor
-                    (vendorId ?? 0) == 0 || p.VendorId == vendorId &&
-                    //whether to load published products only
-                    loadPublishedOnly == null || p.Published == loadPublishedOnly
-                orderby pac.ProductId, pac.Id
-                select pac;
+                               join p in _productRepository.Table on pac.ProductId equals p.Id
+                               where
+                                   //filter by combinations with stock quantity less than the minimum
+                                   pac.StockQuantity <= 0 &&
+                                   //filter by products with tracking inventory by attributes
+                                   p.ManageInventoryMethodId == (int)ManageInventoryMethod.ManageStockByAttributes &&
+                                   //ignore deleted products
+                                   !p.Deleted &&
+                                   //ignore grouped products
+                                   p.ProductTypeId != (int)ProductType.GroupedProduct &&
+                                   //filter by vendor
+                                   (vendorId ?? 0) == 0 || p.VendorId == vendorId &&
+                                   //whether to load published products only
+                                   loadPublishedOnly == null || p.Published == loadPublishedOnly
+                               orderby pac.ProductId, pac.Id
+                               select pac;
 
             return new PagedList<ProductAttributeCombination>(combinations, pageIndex, pageSize, getOnlyTotalCount);
         }
@@ -1697,7 +1700,7 @@ namespace Nop.Services.Catalog
             var pwi = _productWarehouseInventoryRepository.Table.FirstOrDefault(wi => wi.ProductId == product.Id && wi.WarehouseId == shipmentItem.WarehouseId);
             if (pwi == null)
                 return 0;
-            
+
             var shipment = _shipmentRepository.ToCachedGetById(shipmentItem.ShipmentId);
 
             //not shipped yet? hence "BookReservedInventory" method was not invoked
@@ -2032,7 +2035,7 @@ namespace Nop.Services.Catalog
                 throw new ArgumentNullException(nameof(tierPrice));
 
             _tierPriceRepository.Delete(tierPrice);
-            
+
             //event notification
             _eventPublisher.EntityDeleted(tierPrice);
         }
@@ -2060,7 +2063,7 @@ namespace Nop.Services.Catalog
                 throw new ArgumentNullException(nameof(tierPrice));
 
             _tierPriceRepository.Insert(tierPrice);
-            
+
             //event notification
             _eventPublisher.EntityInserted(tierPrice);
         }
@@ -2075,7 +2078,7 @@ namespace Nop.Services.Catalog
                 throw new ArgumentNullException(nameof(tierPrice));
 
             _tierPriceRepository.Update(tierPrice);
-            
+
             //event notification
             _eventPublisher.EntityUpdated(tierPrice);
         }
@@ -2207,9 +2210,9 @@ namespace Nop.Services.Catalog
 
             if (discountId.HasValue)
                 products = from product in products
-                    join dpm in _discountProductMappingRepository.Table on product.Id equals dpm.EntityId
+                           join dpm in _discountProductMappingRepository.Table on product.Id equals dpm.EntityId
                            where dpm.DiscountId == discountId.Value
-                    select product;
+                           select product;
 
             if (!showHidden)
                 products = products.Where(product => !product.Deleted);
@@ -2259,14 +2262,14 @@ namespace Nop.Services.Catalog
                 query = query.Where(pr => pr.StoreId == storeId);
             if (productId > 0)
                 query = query.Where(pr => pr.ProductId == productId);
-            
+
             query = from productReview in query
-                join product in _productRepository.Table on productReview.ProductId equals product.Id
-                where
-                    (vendorId == 0 || product.VendorId == vendorId) &&
-                    //ignore deleted products
-                    !product.Deleted
-                select productReview;
+                    join product in _productRepository.Table on productReview.ProductId equals product.Id
+                    where
+                        (vendorId == 0 || product.VendorId == vendorId) &&
+                        //ignore deleted products
+                        !product.Deleted
+                    select productReview;
 
             //filter by limited to store products
             if (storeId > 0 && !showHidden && !_catalogSettings.IgnoreStoreLimitations)
@@ -2455,7 +2458,7 @@ namespace Nop.Services.Catalog
 
             //update
             _productReviewRepository.Update(productReview);
-            
+
             //event notification
             _eventPublisher.EntityUpdated(productReview);
         }
@@ -2527,7 +2530,7 @@ namespace Nop.Services.Catalog
                 throw new ArgumentNullException(nameof(pwi));
 
             _productWarehouseInventoryRepository.Delete(pwi);
-            
+
             _eventPublisher.EntityDeleted(pwi);
         }
 
@@ -2555,7 +2558,7 @@ namespace Nop.Services.Catalog
                 throw new ArgumentNullException(nameof(pwi));
 
             _productWarehouseInventoryRepository.Update(pwi);
-            
+
             _eventPublisher.EntityUpdated(pwi);
         }
 
@@ -2572,7 +2575,7 @@ namespace Nop.Services.Catalog
                 return;
 
             _productWarehouseInventoryRepository.Update(pwis);
-            
+
             foreach (var pwi in pwis)
             {
                 _eventPublisher.EntityUpdated(pwi);
@@ -2672,9 +2675,9 @@ namespace Nop.Services.Catalog
             {
                 _discountProductMappingRepository.Delete(pdcm.dcm);
                 //update "HasDiscountsApplied" property
-                UpdateHasDiscountsApplied(pdcm.product);                    
-            }   
-        }        
+                UpdateHasDiscountsApplied(pdcm.product);
+            }
+        }
 
         /// <summary>
         /// Get a discount-product mapping records by product identifier

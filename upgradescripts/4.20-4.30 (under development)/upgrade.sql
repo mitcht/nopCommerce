@@ -283,6 +283,12 @@ set @resources='
   <LocaleResource Name="Admin.Catalog.Manufacturers.List.SearchPublished.UnpublishedOnly">
     <Value>Unpublished only</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.Catalog.Products.List.SearchProductTags">
+    <Value>Product tag</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Catalog.Products.List.SearchProductTags.Hint">
+    <Value>Search by a product tag.</Value>
+  </LocaleResource>
 </Language>
 '
 

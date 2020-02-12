@@ -57,6 +57,9 @@ namespace Nop.Web.Areas.Admin.Models.Catalog
         [NopResourceDisplayName("Admin.Catalog.Products.List.GoDirectlyToSku")]
         public string GoDirectlyToSku { get; set; }
 
+        [NopResourceDisplayName("Admin.Catalog.Products.List.SearchProductTags")]
+        public string SearchProductTags { get; set; }
+
         public bool IsLoggedInAsVendor { get; set; }
 
         public bool AllowVendorsToImportProducts { get; set; }

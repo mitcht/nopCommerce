@@ -338,9 +338,9 @@ namespace Nop.Web.Areas.Admin.Factories
                                         _productAttributeParser.ParseProductAttributeValues(productAttributeMapping
                                             .ConditionAttributeXml);
                                     foreach (var attributeValue in selectedValues)
-                                    foreach (var item in attributeModel.Values)
-                                        if (attributeValue.Id == item.Id)
-                                            item.IsPreSelected = true;
+                                        foreach (var item in attributeModel.Values)
+                                            if (attributeValue.Id == item.Id)
+                                                item.IsPreSelected = true;
                                 }
 
                                 break;
@@ -701,12 +701,15 @@ namespace Nop.Web.Areas.Admin.Factories
                 productType: searchModel.SearchProductTypeId > 0 ? (ProductType?)searchModel.SearchProductTypeId : null,
                 keywords: searchModel.SearchProductName,
                 pageIndex: searchModel.Page - 1, pageSize: searchModel.PageSize,
-                overridePublished: overridePublished);
+                overridePublished: overridePublished,
+                productTags: searchModel.SearchProductTags);
 
             //prepare list model
             var model = new ProductListModel().PrepareToGrid(searchModel, products, () =>
             {
-                return products.Select(product =>
+                return products.Where(product =>  
+                string.IsNullOrEmpty(searchModel.SearchProductTags) == false ? _productTagService.GetAllProductTagsByProductId(product.Id).Select(tag => tag.Name).Contains(searchModel.SearchProductTags) : true)
+                .Select(product =>
                 {
                     //fill in model values from the entity
                     var productModel = product.ToModel<ProductModel>();
@@ -1916,7 +1919,7 @@ namespace Nop.Web.Areas.Admin.Factories
                 {
                     //fill in model values from the entity
                     var productAttributeValueModel = value.ToModel<ProductAttributeValueModel>();
-                    
+
                     //fill in additional values (not existing in the entity)
                     productAttributeValueModel.AttributeValueTypeName = _localizationService.GetLocalizedEnum(value.AttributeValueType);
                     productAttributeValueModel.Name = productAttributeMapping.AttributeControlType != AttributeControlType.ColorSquares

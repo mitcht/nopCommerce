@@ -3348,6 +3348,12 @@
   <LocaleResource Name="Admin.Catalog.Products.List.SearchProductName.Hint">
     <Value>A product name.</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.Catalog.Products.List.SearchProductTags">
+    <Value>Product tag</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Catalog.Products.List.SearchProductTags.Hint">
+    <Value>Search by a product tag.</Value>
+  </LocaleResource>
   <LocaleResource Name="Admin.Catalog.Products.List.SearchProductType">
     <Value>Product type</Value>
   </LocaleResource>

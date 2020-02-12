@@ -105,6 +105,7 @@ namespace Nop.Services.Catalog
         /// true - load only "Published" products
         /// false - load only "Unpublished" products
         /// </param>
+        /// <param name="productTags">Filter products by product tags</param>
         /// <returns>Products</returns>
         IPagedList<Product> SearchProducts(
             int pageIndex = 0,
@@ -130,7 +131,8 @@ namespace Nop.Services.Catalog
             IList<int> filteredSpecs = null,
             ProductSortingEnum orderBy = ProductSortingEnum.Position,
             bool showHidden = false,
-            bool? overridePublished = null);
+            bool? overridePublished = null,
+            string productTags = null);
 
         /// <summary>
         /// Search products
@@ -192,7 +194,8 @@ namespace Nop.Services.Catalog
             IList<int> filteredSpecs = null,
             ProductSortingEnum orderBy = ProductSortingEnum.Position,
             bool showHidden = false,
-            bool? overridePublished = null);
+            bool? overridePublished = null,
+            string productTags = null);
 
         /// <summary>
         /// Gets products by product attribute
