@@ -41,5 +41,7 @@ namespace Nop.Web.Models.Boards
         public bool AllowPostVoting { get; set; }
         public int VoteCount { get; set; }
         public bool? VoteIsUp { get; set; }
+        public string IsUseful { get; set; }
+        public string IsNotUseful { get; set; }
     }
 }

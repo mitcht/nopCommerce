@@ -444,6 +444,8 @@ namespace Nop.Web.Factories
                     var postVote = _forumService.GetPostVote(post.Id, _workContext.CurrentCustomer);
                     if (postVote != null)
                         forumPostModel.VoteIsUp = postVote.IsUp;
+                    forumPostModel.IsUseful = "This post / answer is useful";
+                    forumPostModel.IsNotUseful = "This post / answer is not useful";
                 }
 
                 // page number is needed for creating post link in _ForumPost partial view
