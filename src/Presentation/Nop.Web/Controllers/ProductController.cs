@@ -205,10 +205,10 @@ namespace Nop.Web.Controllers
             var errors = new List<string>();
 
             if (string.IsNullOrEmpty(model.ZipPostalCode))
-                errors.Add(_localizationService.GetResource("Products.EstimateShipping.ZipPostalCode.Required"));
+                errors.Add(_localizationService.GetResource("Shipping.EstimateShipping.ZipPostalCode.Required"));
 
             if (model.CountryId == null || model.CountryId == 0)
-                errors.Add(_localizationService.GetResource("Products.EstimateShipping.Country.Required"));
+                errors.Add(_localizationService.GetResource("Shipping.EstimateShipping.Country.Required"));
 
             if (errors.Count > 0)
                 return BadRequest(new { Errors = errors });

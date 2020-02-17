@@ -137,13 +137,13 @@ set @resources='
   <LocaleResource Name="Admin.Customers.Customers.Fields.Newsletter.Hint">
     <Value>Choose stores to subscribe to newsletter.</Value>
   </LocaleResource>
-  <LocaleResource Name="Products.EstimateShipping.ChooseShippingTitle">
+  <LocaleResource Name="Shipping.EstimateShippingPopUp.ChooseShippingTitle">
     <Value>Shipping Method</Value>
   </LocaleResource>
-  <LocaleResource Name="Products.EstimateShipping.Country">
+  <LocaleResource Name="Shipping.EstimateShippingPopUp.Country">
     <Value>Country</Value>
   </LocaleResource>
-  <LocaleResource Name="Products.EstimateShipping.Country.Required">
+  <LocaleResource Name="Shipping.EstimateShipping.Country.Required">
     <Value>Country is required</Value>
   </LocaleResource>
   <LocaleResource Name="Products.EstimateShipping.EstimatedDeliveryPrefix">
@@ -152,28 +152,28 @@ set @resources='
   <LocaleResource Name="Products.EstimateShipping.NoSelectedShippingOption">
     <Value>Please select the address you want to ship from</Value>
   </LocaleResource>
-  <LocaleResource Name="Products.EstimateShipping.NoShippingOptions">
+  <LocaleResource Name="Shipping.EstimateShippingPopUp.NoShippingOptions">
     <Value>No shipping options</Value>
   </LocaleResource>
   <LocaleResource Name="Products.EstimateShipping.PriceTitle">
     <Value>Shipping:</Value>
   </LocaleResource>
-  <LocaleResource Name="Products.EstimateShipping.SelectShippingOption">
+  <LocaleResource Name="Shipping.EstimateShippingPopUp.SelectShippingOption.Button">
     <Value>Apply</Value>
   </LocaleResource>
-  <LocaleResource Name="Products.EstimateShipping.ShippingOption.EstimatedDelivery">
+  <LocaleResource Name="Shipping.EstimateShippingPopUp.ShippingOption.EstimatedDelivery">
     <Value>Estimated Delivery</Value>
   </LocaleResource>
-  <LocaleResource Name="Products.EstimateShipping.ShippingOption.Name">
+  <LocaleResource Name="Shipping.EstimateShippingPopUp.ShippingOption.Name">
     <Value>Name</Value>
   </LocaleResource>
-  <LocaleResource Name="Products.EstimateShipping.ShippingOption.Price">
+  <LocaleResource Name="Shipping.EstimateShippingPopUp.ShippingOption.Price">
     <Value>Price</Value>
   </LocaleResource>
-  <LocaleResource Name="Products.EstimateShipping.ShipToTitle">
+  <LocaleResource Name="Shipping.EstimateShippingPopUp.ShipToTitle">
     <Value>Ship to</Value>
   </LocaleResource>
-  <LocaleResource Name="Products.EstimateShipping.StateProvince">
+  <LocaleResource Name="Shipping.EstimateShippingPopUp.StateProvince">
     <Value>State / province</Value>
   </LocaleResource>
   <LocaleResource Name="Products.EstimateShipping.ToAddress">
@@ -182,10 +182,10 @@ set @resources='
   <LocaleResource Name="Products.EstimateShipping.ViaProvider">
     <Value>via</Value>
   </LocaleResource>
-  <LocaleResource Name="Products.EstimateShipping.ZipPostalCode">
+  <LocaleResource Name="Shipping.EstimateShippingPopUp.ZipPostalCode">
     <Value>Zip / postal code</Value>
   </LocaleResource>
-  <LocaleResource Name="Products.EstimateShipping.ZipPostalCode.Required">
+  <LocaleResource Name="Shipping.EstimateShipping.ZipPostalCode.Required">
     <Value>Zip / postal code is required</Value>
   </LocaleResource>
   <LocaleResource Name="Products.QuantityShouldBePositive">
@@ -202,6 +202,30 @@ set @resources='
   </LocaleResource>
   <LocaleResource Name="Plugins.Pickup.PickupInStore.Fields.TransitDays.Hint">
     <Value>The number of days of delivery of the goods to pickup point.</Value>
+  </LocaleResource>
+  <LocaleResource Name="ShoppingCart.EstimateShipping.ZipPostalCode.Required">
+    <Value></Value>
+  </LocaleResource>
+  <LocaleResource Name="ShoppingCart.EstimateShipping.Country.Required">
+    <Value></Value>
+  </LocaleResource>
+  <LocaleResource Name="ShoppingCart.EstimateShipping.ZipPostalCode">
+    <Value></Value>
+  </LocaleResource>
+  <LocaleResource Name="ShoppingCart.EstimateShipping.StateProvince">
+    <Value></Value>
+  </LocaleResource>
+  <LocaleResource Name="ShoppingCart.EstimateShipping.Country">
+    <Value></Value>
+  </LocaleResource>
+  <LocaleResource Name="ShoppingCart.EstimateShipping">
+    <Value></Value>
+  </LocaleResource>
+  <LocaleResource Name="ShoppingCart.EstimateShipping.ShippingOptionWithRate">
+    <Value></Value>
+  </LocaleResource>
+  <LocaleResource Name="ShoppingCart.EstimateShipping.Tooltip">
+    <Value></Value>
   </LocaleResource>
 </Language>
 '

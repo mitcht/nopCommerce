@@ -1332,6 +1332,7 @@ namespace Nop.Web.Factories
                                 Name = option.Name,
                                 Description = option.Description,
                                 Price = shippingRateString,
+                                Rate = option.Rate,
                                 DeliveryDateFormat = deliveryDateFormat
                             };
                         });
