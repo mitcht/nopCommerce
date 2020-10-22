@@ -596,7 +596,7 @@ namespace Nop.Services.Media
                 if (GeneratedThumbExists(thumbFilePath, thumbFileName))
                     return GetThumbUrl(thumbFileName, storeLocation);
 
-                mutex.WaitOne();
+                mutex.WaitOne(500);
 
                 //check, if the file was created, while we were waiting for the release of the mutex.
                 if (!GeneratedThumbExists(thumbFilePath, thumbFileName))
